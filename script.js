@@ -3,7 +3,7 @@ const squard = Array.from(document.querySelectorAll('.squard'));
 
 
 const query = [];
-const queryFinal = [];
+
 
 // добавляем цвет
 letter.addEventListener("click", (e) => { 
