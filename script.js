@@ -1,28 +1,40 @@
-const letter = document.querySelector('.letter');
-const squard = Array.from(document.querySelectorAll('.squard'));
-
-
+const squard = document.querySelectorAll('.squard');
+const finalSquard = document.querySelector('#sq9');
 const query = [];
 
-
-// добавляем цвет
-letter.addEventListener("click", (e) => { 
-  e.target.classList.add('squard__green');
-  query.push(e.target.id);
-  console.log(query);
-  return query;
-});
-
-// убираем из массива лишние клики (повторные)
-const queryFinal = query.filter(function (item, position, arr) {
-    return arr.lastIndexOf(item) === position; 
-  });
-
-  // убираем цвет
-squard.forEach( function (item) {
-    if (item.classList.contains('.squard__green')) {
-for (i = 0; i < 7; i++) {
-    squard.queryFinal[i].classList.remove('.squard__green');
+function squardIsGreen(e) {
+    e.target.classList.add('squard__green');
+    e.target.removeEventListener('click', squardIsGreen);
+    query.push(e.target);
 }
-    }
-})
+
+function startSquard () {
+    squard.forEach(e => e.addEventListener('click', squardIsGreen));
+}
+
+function clearSquards() {
+    let time = 500;
+    for (i = 0; i < query.length; i++) {     
+    const sqID = query[i];
+    setTimeout(() => {
+    sqID.classList.remove('squard__green')}, time);
+    time = time + 500;
+    };
+    query.length = 0; 
+    setTimeout(() => {startSquard()}, 3000);
+}
+
+function finalSquardGreen () {
+    finalSquard.addEventListener('click', () => {
+        query.push(finalSquard);
+        finalSquard.classList.add('squard__green');
+        clearSquards();
+    }); 
+     
+}
+
+startSquard();
+finalSquardGreen();
+
+
+

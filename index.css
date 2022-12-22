@@ -1,6 +1,6 @@
 
 .letter {
-  
+  width: 310px;
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
@@ -15,6 +15,7 @@
 #sq5, #sq6 {
   border: none;
   cursor: auto;
+  pointer-events: none;
 }
 
 .squard__green {
